@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>홍천초등학교 AI·디지털 선도학교 운영 결과</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --ink:#1e2126;
+    --ink-soft:#4a505a;
+    --line:#e6e8eb;
+    --paper:#ffffff;
+    --wash:#fafaf7;
+    --gold:#e5c158;
+    --gold-deep:#b8912c;
+    --gold-wash:#fdf7e6;
+    --gray-bar:#d3d7dc;
+    --blue-gray:#5d6b7a;
+    --up:#1d8a5f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px;}
+
+  /* ─── 헤더 ─── */
+  header{
+    background:var(--wash);
+    border-bottom:3px solid var(--gold);
+    padding:44px 0 36px;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:12.5px;font-weight:700;letter-spacing:.14em;
+    color:var(--gold-deep);
+    border:1px solid var(--gold);
+    border-radius:999px;
+    padding:4px 14px;
+    margin-bottom:16px;
+    background:#fff;
+  }
+  header h1{font-size:clamp(24px,5vw,34px);font-weight:800;line-height:1.3;letter-spacing:-.02em;}
+  header h1 small{display:block;font-size:clamp(15px,3vw,18px);font-weight:600;color:var(--ink-soft);margin-top:8px;}
+  .hero-goal{
+    margin-top:20px;
+    font-size:16px;color:#3d424b;
+    border-left:3px solid var(--gold);
+    padding:2px 0 2px 14px;
+    line-height:1.7;
+  }
+  .hero-goal b{color:var(--ink);}
+
+  /* ─── 학기 비교 배지 ─── */
+  .term-pill{
+    display:inline-flex;align-items:center;flex-wrap:wrap;column-gap:8px;
+    background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:8px 18px;font-size:14.5px;font-weight:600;color:#3d424b;
+    margin-top:18px;max-width:100%;
+  }
+  .term-pill .grp{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;}
+  .term-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--gray-bar);flex:none;}
+  .term-pill .dot.on{background:var(--gold);}
+  .term-pill .arrow{color:var(--gold-deep);font-weight:800;}
+  .term-pill b{color:var(--ink);}
+
+  /* ─── 섹션 공통 ─── */
+  section{padding:52px 0 8px;}
+  .sec-label{
+    font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--gold-deep);
+    margin-bottom:8px;
+  }
+  h2{font-size:clamp(22px,4.5vw,28px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;}
+  .sec-desc{font-size:16px;color:#3d424b;margin-bottom:28px;line-height:1.7;}
+  .sec-desc em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-wash) 62%);font-weight:600;color:var(--ink);}
+
+  /* ─── 핵심 숫자 카드 ─── */
+  .kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media(min-width:640px){.kpi-grid{grid-template-columns:repeat(4,1fr);}}
+  .kpi{
+    border:1px solid var(--line);border-radius:14px;
+    padding:20px 16px 18px;background:#fff;
+  }
+  .kpi .who{font-size:13.5px;font-weight:700;color:#3d424b;margin-bottom:10px;}
+  .kpi .move{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+  .kpi .from{font-size:16px;font-weight:600;color:#9aa0a8;text-decoration:line-through;text-decoration-color:#c9cdd3;text-decoration-thickness:1.5px;}
+  .kpi .arrow{color:var(--gold-deep);font-weight:800;font-size:16px;}
+  .kpi .to{font-size:28px;font-weight:800;letter-spacing:-.02em;}
+  .kpi .delta{font-size:14px;font-weight:700;color:var(--up);margin-top:4px;}
+  .kpi .note{font-size:13px;color:#4a505a;margin-top:6px;line-height:1.5;}
+
+  /* ─── 학교 소개 표 ─── */
+  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(min-width:640px){.intro-grid{grid-template-columns:repeat(4,1fr);}}
+  .intro{
+    border:1px solid var(--line);border-radius:14px;padding:16px;
+    background:var(--wash);
+  }
+  .intro .k{font-size:13.5px;font-weight:700;color:var(--blue-gray);margin-bottom:4px;}
+  .intro .v{font-size:18px;font-weight:800;letter-spacing:-.01em;}
+  .intro .s{font-size:13px;color:#4a505a;margin-top:2px;}
+
+  .on-wash .intro{background:#fff;border-color:#e2ddd0;}
+  .on-wash{margin-top:26px;}
+
+  /* ─── 운영과제 ─── */
+  .task{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:12px;background:#fff;
+  }
+  .task-head{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:16px 18px;background:var(--wash);
+    border-bottom:1px solid var(--line);
+  }
+  .task-num{
+    flex:none;width:28px;height:28px;border-radius:8px;
+    background:var(--gold);color:#fff;font-weight:800;font-size:14px;
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  .task-num.opt{background:var(--blue-gray);}
+  .task-head h3{font-size:17.5px;font-weight:800;line-height:1.45;letter-spacing:-.01em;}
+  .task-head p{font-size:14px;color:#4a505a;margin-top:3px;}
+  .task ul{list-style:none;padding:16px 18px;}
+  .task li{
+    position:relative;padding-left:18px;font-size:15px;color:#2e3238;margin-bottom:9px;
+  }
+  .task li:last-child{margin-bottom:0;}
+  .task li::before{content:'';position:absolute;left:0;top:.58em;width:7px;height:7px;border-radius:2px;background:var(--gold);}
+
+  /* ─── 비교 바 차트 ─── */
+  .cmp{border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-bottom:14px;background:#fff;}
+  .cmp .q{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:4px;line-height:1.5;}
+  .cmp .src{font-size:12.5px;color:#7d838b;margin-bottom:16px;line-height:1.55;}
+  .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .bar-row:last-of-type{margin-bottom:0;}
+  .bar-term{flex:none;width:46px;font-size:12.5px;font-weight:700;color:var(--ink-soft);}
+  .bar-track{flex:1;height:22px;background:#f2f3f5;border-radius:6px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11.5px;font-weight:700;color:#fff;min-width:52px;}
+  .bar-fill.t1{background:#b9bfc7;color:#3a3e45;}
+  .bar-fill.t2{background:linear-gradient(90deg,#d9b23c,var(--gold-deep));}
+  .cmp .why{
+    margin-top:16px;font-size:14.5px;color:#33373e;
+    background:var(--wash);border-radius:10px;padding:12px 15px;line-height:1.7;
+  }
+  .cmp .why b{color:var(--ink);}
+  .delta-chip{
+    display:inline-block;font-size:12px;font-weight:800;color:#116b45;
+    background:#d8efe3;border-radius:999px;padding:2.5px 10px;margin-left:6px;vertical-align:2px;
+  }
+
+  /* ─── 스코어카드 ─── */
+  .scorecard{border-radius:16px;background:var(--ink);color:#fff;padding:28px 24px;}
+  .scorecard h3{font-size:18px;font-weight:800;margin-bottom:4px;}
+  .scorecard .sub{font-size:13px;color:#aab0b9;margin-bottom:20px;}
+  .sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media(min-width:640px){.sc-grid{grid-template-columns:repeat(4,1fr);}}
+  .sc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 12px;}
+  .sc .t{font-size:11.5px;font-weight:600;color:#c3c8cf;margin-bottom:6px;}
+  .sc .v{font-size:19px;font-weight:800;letter-spacing:-.01em;}
+  .sc .v small{font-size:12px;font-weight:600;color:var(--gold);display:block;margin-top:2px;}
+
+  /* ─── 근거 노트 ─── */
+  .evidence{
+    margin-top:24px;border:1px dashed #d8c68a;border-radius:12px;
+    background:var(--gold-wash);padding:18px 20px;
+    font-size:14px;color:#5c4d1a;line-height:1.8;
+  }
+  .evidence b{color:#54450f;}
+
+  /* ─── 푸터 ─── */
+  footer{
+    margin-top:56px;border-top:1px solid var(--line);
+    padding:28px 0 44px;font-size:12.5px;color:#9aa0a8;line-height:1.8;
+  }
+  footer b{color:var(--ink-soft);}
+
+  /* 애니메이션 */
+  @media(prefers-reduced-motion:no-preference){
+    .bar-fill{animation:grow .8s cubic-bezier(.2,.7,.3,1) both;}
+    @keyframes grow{from{width:0;}}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">2026년 AI·디지털 활용 선도학교</span>
+    <h1>홍천초등학교<small>한 해 운영, 숫자로 보는 변화</small></h1>
+    <div class="hero-goal">
+      <b>운영 목표</b> — 하이터치 창작 중심 교육과 데이터 기반 맞춤형 학습을 통해 학생의 사고를 확장하고,
+      교사의 수업 전문성과 학교의 디지털 협업 문화를 함께 발전시킵니다.
+    </div>
+    <div class="intro-grid on-wash">
+      <div class="intro"><div class="k">학교 규모</div><div class="v">18개 학급</div><div class="s">학생 322명 (1~6학년)</div></div>
+      <div class="intro"><div class="k">지역</div><div class="v">강원특별자치도</div><div class="s">홍천군</div></div>
+      <div class="intro"><div class="k">운영 기간</div><div class="v">2026학년도</div><div class="s">1회차</div></div>
+      <div class="intro"><div class="k">운영 예산</div><div class="v">4,000만 원</div><div class="s">40,000천 원</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- 1. 운영과제 -->
+<section id="tasks">
+  <div class="wrap">
+    <p class="sec-label">운영과제</p>
+    <h2>네 가지 과제, 이렇게 밀었습니다</h2>
+    <p class="sec-desc">포스터에 소개된 운영과제 추진 실적입니다.</p>
+
+    <div class="task">
+      <div class="task-head">
+        <span class="task-num">①</span>
+        <div>
+          <h3>지식 습득에서 창작으로, 전달자에서 설계자·협업자로</h3>
+          <p>AI·디지털 기반 교육자료와 연계한 교수·학습방법 혁신 및 교사의 역할 변화</p>
+        </div>
+      </div>
+      <ul>
+        <li>AI·디지털 교육자료를 활용한 교과별 교수·학습방법 개선</li>
+        <li>실생활 문제 해결과 디지털 창작 중심의 학생 주도형 수업 운영</li>
+        <li>지식 전달자에서 학습 설계자·조력자로의 교사 역할 확대</li>
+        <li>교사 공동 연구 및 실천 사례 공유를 통한 디지털 수업 전문성 강화</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <div class="task-head">
+        <span class="task-num">②</span>
+        <div>
+          <h3>개개인의 수준과 속도를 존중하는 학습으로의 전환</h3>
+          <p>AI·디지털 기반 교육자료를 활용한 학생 맞춤교육 적용</p>
+        </div>
+      </div>
+      <ul>
+        <li>AI 코스웨어를 활용한 학생별 학습 수준 및 성취도 진단</li>
+        <li>학습 수준과 속도를 고려한 개별화 학습 과제 제공</li>
+        <li>학습 데이터에 기반한 맞춤형 피드백 및 학습 경로 재지정</li>
+        <li>학생의 개별적 특성을 반영한 디지털 교수·학습 환경 조성</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <div class="task-head">
+        <span class="task-num">③</span>
+        <div>
+          <h3>교육공동체의 경험과 인식을 바탕으로 효과성 점검</h3>
+          <p>AI·디지털 기반 교육자료 활용 만족도 조사 실시 — 이 페이지의 설문 결과가 바로 이 과제의 결과물입니다</p>
+        </div>
+      </div>
+      <ul>
+        <li>학생·교원·학부모 만족도 조사 실시</li>
+        <li>지식·역량·가치와 태도·기술 영역의 교육적 효과 분석</li>
+        <li>디지털 활용 수업에 대한 교육공동체의 인식과 경험 조사</li>
+        <li>조사 결과를 바탕으로 교수·학습 개선 방향 및 시사점 도출 (2027학년도)</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <div class="task-head">
+        <span class="task-num opt">선택</span>
+        <div>
+          <h3>클라우드 기반 협업과 AI 활용을 통한 업무 환경 조성</h3>
+          <p>학교 업무방식 개선: 디지털 기반 업무방식 개선</p>
+        </div>
+      </div>
+      <ul>
+        <li>클라우드 기반 업무 자료 관리 및 공동 활용 체계 구축</li>
+        <li>디지털 협업 도구를 활용한 교직원 간 소통 및 업무 효율화 시도</li>
+        <li>AI 기반 업무 지원 도구 활용을 통한 반복적 행정 업무 간소화</li>
+        <li>디지털 기반 학교 업무 환경 개선 및 교사의 교육활동 집중 여건 조성</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 2. 설문 결과 한눈에 보기 -->
+<section id="summary">
+  <div class="wrap">
+    <p class="sec-label">설문 결과</p>
+    <h2>학생도, 교사도 — 모두 올라갔습니다</h2>
+    <div class="term-pill">
+      <span class="grp"><span class="dot"></span>1학기</span>
+      <span class="arrow">→</span>
+      <span class="grp"><span class="dot on"></span>2학기</span>
+      <span>설문 결과는 모두 <b>1학기(7월) 대비 2학기(11월)</b> 비교입니다</span>
+    </div>
+    <p class="sec-desc">만족도 설문은 5점 만점으로 1학기(7월)와 2학기(11월) 두 번 실시했습니다. 1학기에는 학생 97명(3~5학년)·교사 18명이, 2학기에는 학생 179명(3~6학년)·교사 17명이 응답했고, <em>모든 주요 영역에서 긍정 응답이 늘었습니다.</em></p>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="who">학생 전체 평균</div>
+        <div class="move"><span class="from">4.07</span><span class="arrow">→</span><span class="to">4.22</span></div>
+        <div class="delta">▲ 0.15점</div>
+        <div class="note">응답 학생 97명 → 179명</div>
+      </div>
+      <div class="kpi">
+        <div class="who">교사 전체 평균</div>
+        <div class="move"><span class="from">4.22</span><span class="arrow">→</span><span class="to">4.45</span></div>
+        <div class="delta">▲ 0.23점</div>
+        <div class="note">응답 교사 18명 → 17명</div>
+      </div>
+      <div class="kpi">
+        <div class="who">학생 "매우 그렇다" 응답</div>
+        <div class="move"><span class="from">33.7%</span><span class="arrow">→</span><span class="to">41.0%</span></div>
+        <div class="delta">▲ 7.3%p</div>
+        <div class="note">부정 응답은 6.6% → 3.7%로 절반 이하로 감소</div>
+      </div>
+      <div class="kpi">
+        <div class="who">교사 문항 중 100% 긍정</div>
+        <div class="move"><span class="from">1</span><span class="arrow">→</span><span class="to">7</span><span style="font-size:14px;font-weight:600">/12문항</span></div>
+        <div class="delta">1학기 1문항 → 2학기 7문항</div>
+        <div class="note">교사 전원이 "그렇다" 이상으로 답한 문항 수</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 학생 설문 -->
+<section id="student">
+  <div class="wrap">
+    <p class="sec-label">학생 설문</p>
+    <h2>학생들이 달라진 점</h2>
+    <p class="sec-desc">1학기(7월) 대비 2학기(11월) 긍정 응답률(%) 비교입니다. 회색이 1학기, 노란색이 2학기예요.</p>
+
+    <div class="cmp">
+      <div class="q">배운 내용으로 나만의 디지털 작품을 만들 수 있어요 <span class="delta-chip">+9.1%p</span></div>
+      <div class="src">설문 원문: "나는 배운 내용을 활용하여 나만의 아이디어를 담은 디지털 작품을 만들 수 있다. (캔바, 미리캔버스 또는 여러 가지 앱 활용)"</div>
+      <div class="bar-row"><span class="bar-term">1학기</span><div class="bar-track"><div class="bar-fill t1" style="width:68%">68.0%</div></div></div>
+      <div class="bar-row"><span class="bar-term">2학기</span><div class="bar-track"><div class="bar-fill t2" style="width:77.1%">77.1%</div></div></div>
+      <div class="why"><b>가장 크게 오른 문항.</b> 캔바·미리캔버스 등 디지털 창작 도구를 활용한 수업이 쌓이면서, 학생이 직접 작품을 만드는 활동이 학습 문화로 자리 잡았습니다. 평균 점수도 3.96 → 4.18점(+0.22)으로 상승했습니다.</div>
+    </div>
+
+    <div class="cmp">
+      <div class="q">공부한 내용을 스스로 디지털 자료로 정리하고 관리해요 <span class="delta-chip">평균 최대 상승</span></div>
+      <div class="src">설문 원문: "나는 내가 공부한 내용을 디지털 자료로 정리하고 스스로 관리할 수 있다."</div>
+      <div class="bar-row"><span class="bar-term">1학기</span><div class="bar-track"><div class="bar-fill t1" style="width:63.9%">63.9%</div></div></div>
+      <div class="bar-row"><span class="bar-term">2학기</span><div class="bar-track"><div class="bar-fill t2" style="width:67%">67.0%</div></div></div>
+      <div class="why"><b>학생 9개 문항 중 평균 상승폭 1위(+0.24점, 3.70 → 3.94).</b> 디지털 기반 자기주도 학습 습관이 형성되기 시작한 신호로 해석됩니다.</div>
+    </div>
+
+    <div class="cmp">
+      <div class="q">태블릿과 여러 앱을 활용한 수업이 만족스러워요 <span class="delta-chip">두 학기 모두 최고 점수</span></div>
+      <div class="src">설문 원문: "나는 태블릿, 다양한 앱을 활용하여 수업 활동을 하는 것이 만족스럽다."</div>
+      <div class="bar-row"><span class="bar-term">1학기</span><div class="bar-track"><div class="bar-fill t1" style="width:87.6%">87.6%</div></div></div>
+      <div class="bar-row"><span class="bar-term">2학기</span><div class="bar-track"><div class="bar-fill t2" style="width:89.9%">89.9%</div></div></div>
+      <div class="why">수업 만족도는 두 학기 모두 9개 문항 중 가장 높습니다(평균 4.54 → 4.58점). 디지털 활용 수업이 학생들에게 안정적으로 긍정적으로 받아들여지고 있습니다.</div>
+    </div>
+
+    <div class="cmp">
+      <div class="q">"배운 내용을 우리 생활과 연결해서 이야기할 수 있어요"</div>
+      <div class="src">설문 원문: "나는 오늘 배운 내용을 우리 생활과 연결해서 이야기할 수 있다."</div>
+      <div class="bar-row"><span class="bar-term">1학기</span><div class="bar-track"><div class="bar-fill t1" style="width:60.8%">60.8%</div></div></div>
+      <div class="bar-row"><span class="bar-term">2학기</span><div class="bar-track"><div class="bar-fill t2" style="width:63.1%">63.1%</div></div></div>
+      <div class="why">+0.23점으로 상승했지만 여전히 3점대 후반이라, <b>다음 과제로 꼽은 영역</b>입니다. 발표·공유 중심의 수업 마무리와 실생활 연결 과제를 강화할 계획입니다.</div>
+    </div>
+
+    <div class="evidence">
+      <b>📄 근거 자세히</b> — 학생 전체 평균 4.07 → 4.22점(+0.15). "매우 그렇다" 응답 33.7% → 41.0%(+7.3%p), 부정 응답 6.6% → 3.7%(−2.9%p). 모든 학년에서 평균이 상승했고, 특히 1학기에 낮았던 5학년이 3.89 → 4.13점(+0.24)으로 올라와 학년 간 격차가 줄었습니다. 6학년은 이번 조사에 새로 포함되어 4.28점을 기록했습니다.
+    </div>
+  </div>
+</section>
+
+<!-- 4. 교사 설문 -->
+<section id="teacher">
+  <div class="wrap">
+    <p class="sec-label">교사 설문</p>
+    <h2>교사들이 달라진 점</h2>
+    <p class="sec-desc">1학기에 상대적으로 약했던 <em>AI·디지털 실행 영역</em>에서 가장 큰 상승이 나타났습니다.</p>
+
+    <div class="cmp">
+      <div class="q">AI·디지털 도구를 수업에서 적절히 활용해요 <span class="delta-chip">+27.8%p · 전원 긍정</span></div>
+      <div class="src">설문 원문: "나는 AI·디지털 도구를 학생의 배움을 지원하는 교육적 도구로 적절하게 활용한다."</div>
+      <div class="bar-row"><span class="bar-term">1학기</span><div class="bar-track"><div class="bar-fill t1" style="width:72.2%">72.2%</div></div></div>
+      <div class="bar-row"><span class="bar-term">2학기</span><div class="bar-track"><div class="bar-fill t2" style="width:100%">100%</div></div></div>
+      <div class="why">평균 4.06 → 4.47점(+0.41). <b>교사 전원이 긍정 응답으로 전환</b>했습니다. 선도학교 연수와 협력 수업 연구가 실제 수업 실행력으로 이어진 결과입니다.</div>
+    </div>
+
+    <div class="cmp">
+      <div class="q">학생들이 디지털로 창작하는 수업을 운영해요 <span class="delta-chip">+27.1%p</span></div>
+      <div class="src">설문 원문: "나는 학생들이 배운 내용을 바탕으로 자신만의 아이디어를 디지털 방식으로 표현하고 창작할 수 있도록 수업을 운영한다."</div>
+      <div class="bar-row"><span class="bar-term">1학기</span><div class="bar-track"><div class="bar-fill t1" style="width:61.1%">61.1%</div></div></div>
+      <div class="bar-row"><span class="bar-term">2학기</span><div class="bar-track"><div class="bar-fill t2" style="width:88.2%">88.2%</div></div></div>
+      <div class="why">평균 3.83 → 4.35점(<b>+0.52, 교사 문항 중 최대 상승폭</b>). 1학기 점검에서 발견한 약점을 교사 연수·동료 교수·수업 자료 공유로 보완한 결과입니다.</div>
+    </div>
+
+    <div class="cmp">
+      <div class="q">학생의 학습 과정을 디지털로 기록하고 관리해요 <span class="delta-chip">+26.8%p</span></div>
+      <div class="src">설문 원문: "나는 학생들이 자신의 학습 과정을 디지털 기반으로 기록하고 관리하며 성장할 수 있도록 수업에 디지털 기술을 활용한다."</div>
+      <div class="bar-row"><span class="bar-term">1학기</span><div class="bar-track"><div class="bar-fill t1" style="width:55.6%">55.6%</div></div></div>
+      <div class="bar-row"><span class="bar-term">2학기</span><div class="bar-track"><div class="bar-fill t2" style="width:82.4%">82.4%</div></div></div>
+      <div class="why">평균 3.78 → 4.24점(+0.46). 학생 학습 데이터를 바탕으로 수업을 운영하는 문화가 자리 잡기 시작했습니다.</div>
+    </div>
+
+    <div class="cmp">
+      <div class="q">학생 수준에 맞는 맞춤형 학습을 제공해요 <span class="delta-chip">전원 긍정</span></div>
+      <div class="src">설문 원문: "나는 학생 수준과 특성을 고려하여 AI·디지털 기술을 활용한 맞춤형 학습을 제공한다."</div>
+      <div class="bar-row"><span class="bar-term">1학기</span><div class="bar-track"><div class="bar-fill t1" style="width:88.9%">88.9%</div></div></div>
+      <div class="bar-row"><span class="bar-term">2학기</span><div class="bar-track"><div class="bar-fill t2" style="width:100%">100%</div></div></div>
+      <div class="why">AI가 제공한 정보를 비판적으로 검토하도록 지도하는 역량(+0.18)도 함께 올라, 단순 도구 활용을 넘어 <b>AI 리터러시 교육</b>으로 운영 범위가 넓어졌습니다.</div>
+    </div>
+
+    <div class="evidence">
+      <b>📄 근거 자세히</b> — 교사 전체 평균 4.22 → 4.45점(+0.23). 1학기 취약 영역 4개 문항(디지털 창작 수업, 디지털 연결 학습 지원, 디지털 학습 기록·관리, AI·디지털 도구 활용)이 +0.41~+0.52점 상승했고 긍정 응답률은 55.6~72.2%에서 82.4~100%로 도약했습니다. 12개 문항 중 유일하게 감소한 문항은 "실생활 연결 수업"(−0.08)으로, 학년 공통 설계 자료 제작·보급으로 보완할 계획입니다.
+    </div>
+  </div>
+</section>
+
+<!-- 5. 종합 -->
+<section id="conclusion">
+  <div class="wrap">
+    <p class="sec-label">종합 평가</p>
+    <h2>1학기에 발견한 약점, 2학기에 가장 크게 개선됐습니다</h2>
+    <p class="sec-desc">1학기 조사에서 도출한 취약 영역을 2학기 운영 계획에 반영한 결과, 해당 영역에서 가장 큰 개선이 나타났습니다. 즉 <em>"조사 → 분석 → 운영 개선 → 재조사"의 선순환이 실제로 작동</em>했습니다.</p>
+
+    <div class="scorecard">
+      <h3>운영 효과 4가지</h3>
+      <p class="sub">포스터 "운영 효과 및 제언"의 핵심 지표</p>
+      <div class="sc-grid">
+        <div class="sc"><div class="t">교사 AI·디지털 수업 역량</div><div class="v">+0.41점<small>+27.8%p (긍정 100%)</small></div></div>
+        <div class="sc"><div class="t">디지털 창작 수업 확산</div><div class="v">교사 +0.52점<small>학생 긍정률 +9.1%p</small></div></div>
+        <div class="sc"><div class="t">학습 기록·관리 문화</div><div class="v">교사 3.78→4.24<small>학생 3.70→3.94 동시 상승</small></div></div>
+        <div class="sc"><div class="t">학생 긍정 학습 경험</div><div class="v">33.7→41.0%<small>부정 응답 6.6→3.7%</small></div></div>
+      </div>
+    </div>
+
+    <div class="evidence" style="margin-top:14px">
+      <b>📄 앞으로의 계획</b> — ① 개념 설명·실생활 연결 수업 강화(학년 공통 설계 자료 보급, 발표·공유 세션 정례화) ② 디지털 포트폴리오를 전 학년으로 확대 ③ AI 정보 비판적 검토 활동 체계화 ④ 설문 문항 세분화·서술형 추가 등 조사 도구 보완.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>자료 출처</b><br>
+    · 「2026년 AI디지털 활용 선도학교 운영포스터」 — 홍천초등학교<br>
+    · 「2026학년도 AI·디지털 만족도 설문조사 분석 보고서」 — 홍천초등학교 AI·디지털 선도학교 운영부, 2026년 11월<br>
+    · 설문 응답: 1학기 학생 97명·교사 18명(115부), 2학기 학생 179명·교사 17명(196부) / 5점 리커트 척도<br>
+    · 모든 수치는 원시 응답 자료를 수치화하여 산출한 값이며, 이 페이지는 포스터와 보고서의 내용만을 정리한 것입니다.
+  </div>
+</footer>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
